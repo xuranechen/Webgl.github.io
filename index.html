@@ -4,12 +4,31 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | WebGLBuilder</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>
     <script src="Build/UnityLoader.js"></script>
     <script>
-      UnityLoader.instantiate("unityContainer", "Build/Webgl.github.io.json");
+      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/WebGLTest.json", {onProgress: UnityProgress});
+		function TestSendA(){
+		unityInstance.SendMessage("SystemMgr","ButtonChange","A");
+	  }
+	  function TestSendB(){
+		unityInstance.SendMessage("SystemMgr","ButtonChange","B");
+	  }
+	  function TestSendC(){
+		unityInstance.SendMessage("SystemMgr","ButtonChange","C");
+	  }
     </script>
   </head>
   <body>
-    <div id="unityContainer" style="width: 650px; height: 700px; margin: auto"></div>
+    <div class="webgl-content">
+      <div id="unityContainer" style="width: 650px; height: 700px"></div>
+      <div class="footer">
+		<button type="button" onclick="TestSendA()">A高炉</button>
+		<button type="button" onclick="TestSendB()">B高炉</button>
+		<button type="button" onclick="TestSendC()">C高炉</button>
+      </div>
+    </div>
   </body>
 </html>
